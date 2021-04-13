@@ -71,27 +71,29 @@ function plots(id) {
         var trace1 = {
             x: samples.otu_ids,
             y: samples.sample_values,
+            text:samples.otu_labels,
             mode: "markers",
             marker: {
                 size: samples.sample_values,
-                color:
-                samples.otu_ids
-            },
-            text:samples.otu_labels
+                color: samples.otu_ids,
+                colorscale: "black"
+            }
+            //text:samples.otu_labels
         };
          
          //Layout for the buble plot
-         var layput_b = {
+         var layout_b = {
+             margin: {t:0},
              xaxis: {title: "OTU ID"},
-             height: 600,
-             width: 1200
+             margin: {t: 30}
+            
          };
 
          // Data variable
-         var data1 = [tarce1];
+         //var data = tarce1;
 
          // Bubble plot
-         Plotly.newPlot("bubble", data1, layout_b);
+         Plotly.newPlot("bubble", trace1, layout_b);
 
          // Gauge chart
          var data_g = [
@@ -104,13 +106,13 @@ function plots(id) {
                  mode: "gauge+number",
                  gauge: {axis: {range: [null, 9]},
                  steps: [
-                     {range: [0, 1], color: "white"},
-                     {range: [1, 2], color: "white"},
-                     {range: [2, 3], color: "white"},
-                     {range: [3, 4], color: "white"},
-                     {range: [4, 5], color: "white"},
-                     {range: [5, 6], color: "white"},
-                     {range: [6, 7], color: "white"},
+                     {range: [0, 1], color: "yellow"},
+                     {range: [1, 2], color: "green"},
+                     {range: [2, 3], color: "blue"},
+                     {range: [3, 4], color: "purple"},
+                     {range: [4, 5], color: "orange"},
+                     {range: [5, 6], color: "red"},
+                     {range: [6, 7], color: "black"},
                      {range: [7, 8], color: "white"},
                      {range: [8, 9], color: "white"}
                  ]}
