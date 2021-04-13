@@ -20,7 +20,7 @@ function Info(id) {
 //Function for entire plots
 function plots(id) {
     //Get data from json.file
-    d3.json("sample.json").then((data) => {
+    d3.json("samples.json").then((data) => {
         // console.log(data)
 
         // Filtering wfreq value by id
@@ -53,7 +53,7 @@ function plots(id) {
         // Trace for the plot
         var trace = {
             x: samplevalues,
-            y: OTD_id,
+            y: OTU_id,
             text: labels,
             marker: {
                 color: 'blue'},
@@ -137,7 +137,7 @@ function plots(id) {
     init();
 
     //Change event function
-    function optionChanged(thisvalue) {
+    function optionChanged(id) {
         plots(id);
-        demoInfo(id)
+        Info(id)
     }
