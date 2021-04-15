@@ -25,8 +25,9 @@ function plots(id) {
 
         // Filtering wfreq value by id
         var wfreq = data.metadata.filter(f => f.id.toString() === id) [0];
-        wreq = wfreq.wfreq;
-        console.log("Washing Frequency: " + wfreq);
+        console.log(wfreq.wfreq)
+        var washFrequency = wfreq.wfreq;
+        console.log("Washing Frequency: " + washFrequency);
 
         // Filtering samples values by id
         var samples = data.samples.filter(s => s.id.toString() === id) [0];
@@ -93,28 +94,28 @@ function plots(id) {
          //var data = tarce1;
 
          // Bubble plot
-         Plotly.newPlot("bubble", trace1, layout_b);
+         Plotly.newPlot("bubble", [trace1], layout_b);
 
          // Gauge chart
          var data_g = [
              {
                  domain: {x: [0,1], y: [0,1]},
-                 value: wfreq,
+                 value: washFrequency,
                  title: {text: `Belly Button Washing Frequency`},
                  type: "indicator",
 
                  mode: "gauge+number",
                  gauge: {axis: {range: [null, 9]},
                  steps: [
-                     {range: [0, 1], color: "yellow"},
-                     {range: [1, 2], color: "green"},
-                     {range: [2, 3], color: "blue"},
-                     {range: [3, 4], color: "purple"},
-                     {range: [4, 5], color: "orange"},
-                     {range: [5, 6], color: "red"},
-                     {range: [6, 7], color: "black"},
-                     {range: [7, 8], color: "white"},
-                     {range: [8, 9], color: "white"}
+                     {range: [0, 1], color: "beige"},
+                     {range: [1, 2], color: "beige"},
+                     {range: [2, 3], color: "light green"},
+                     {range: [3, 4], color: "light green"},
+                     {range: [4, 5], color: "green"},
+                     {range: [5, 6], color: "green"},
+                     {range: [6, 7], color: "darkgreen"},
+                     {range: [7, 8], color: "darkgreen"},
+                     {range: [8, 9], color: "darkgreen"}
                  ]}
              }
          ];
@@ -130,7 +131,7 @@ function plots(id) {
         // Read the data
         d3.json("samples.json").then((data) => {
             //console.log(data);
-
+            plots("940") 
             //Name ID to the dropdown menu
             data.names.forEach((name) => {
                 d3.select("#selDataset").append("option").text(name).property("value");
